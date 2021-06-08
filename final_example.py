@@ -3,6 +3,16 @@ from matplotlib import pyplot as plt
 
 # read data from file
 def read_column_from_data(file_path, column_name, num_measurements = None):
+ 
+  """
+  calculates mean from the data in an csv file
+	Args:
+	file_path(string)
+	num_measurements(int) : 
+	Returns:
+	column_data (panda series)
+  """
+
   if num_measurements:
     data = pd.read_csv(file_path, nrows=num_measurements)
   else:
