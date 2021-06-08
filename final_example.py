@@ -1,11 +1,16 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
-num_measurements = 25
-
 # read data from file
-data = pd.read_csv('temperatures.csv', nrows=num_measurements)
-temperatures = data['Air temperature (degC)']
+def read_column_from_data(file_path, column_name, num_measurements = None):
+  if num_measurements:
+    data = pd.read_csv(file_path, nrows=num_measurements)
+  else:
+    data = pd.read_csv(file_path)
+  column_data = data[column_name]
+  return column_data
+
+temperatures = read_column_from_data(file_path = 'temperatures.csv', column_name = 'Air temperature (degC)', num_measurements = 25)
 
 # compute statistics
 mean = temperatures.mean()
